@@ -1,9 +1,11 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
+// components
+import LogIn from './components/LogIn';
 
 function App() {
   return (
     <Fragment>
-      hello world from react js
+      <LogIn />
     </Fragment>
   );
 }
