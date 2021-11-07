@@ -1,8 +1,10 @@
 import React, { Fragment } from 'react';
 // icons
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTimesCircle} from '@fortawesome/free-solid-svg-icons'
 import {faCheckCircle} from '@fortawesome/free-solid-svg-icons'
+// styled components
+import { IconsStyled, InputStyled } from '../../styledComponents/LogIn';
+
 
 function Input({title, type, placeholder,state, setState, expressions,image}) {
   const handlerChange = e => {
@@ -24,16 +26,17 @@ function Input({title, type, placeholder,state, setState, expressions,image}) {
       <div>
         <div>
           <label htmlFor="">{title}: </label>
-          <input 
+          <InputStyled 
             type={type}
             placeholder={placeholder}
             value={state.value}
             onChange={handlerChange}
             onKeyUp={validations}
             onBlur={validations}
-            required />
+            required
+            state={state.valid} />
         </div>
-        <FontAwesomeIcon icon={state.valid ? faCheckCircle : faTimesCircle } />
+        <IconsStyled icon={state.valid ? faCheckCircle : faTimesCircle } state={state.valid} />
       </div> : null }
       {image ? 
       <div>
@@ -47,7 +50,7 @@ function Input({title, type, placeholder,state, setState, expressions,image}) {
             onKeyUp={validations}
             onBlur={validations} />
         </div>
-        <FontAwesomeIcon icon={state.valid ? faCheckCircle: faTimesCircle} />
+        <IconsStyled icon={state.valid ? faCheckCircle: faTimesCircle} state={state.valid} />
       </div> : null }
 
     </Fragment>
