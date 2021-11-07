@@ -1,6 +1,8 @@
 import React, { Fragment, useState } from 'react'
 // components
 import Input from './Input'
+// styled components
+import { Form } from '../../styledComponents/LogInStyles'
 
 function LogIn() {
   const [name, setName] = useState({value: "", valid: null })
@@ -26,7 +28,8 @@ function LogIn() {
   }  
   return (
     <Fragment>
-      <form onSubmit={handlerSubmit}>
+      <Form onSubmit={handlerSubmit}>
+        <h1>Log In</h1>
         <Input
           title={"Name"}
           placeholder={"Thomas"}
@@ -57,7 +60,7 @@ function LogIn() {
           image={true}
           expressions={regularExpressions.link} />    
         <button>Log In</button>
-      </form>           
+      </Form>           
     </Fragment>
   )
 }
