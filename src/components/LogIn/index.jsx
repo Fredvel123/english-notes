@@ -1,17 +1,26 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useState, useEffect } from 'react';
 // components
-import Input from './Input'
+import Input from './Input';
 // styled components
-import { Form } from '../../styledComponents/LogInStyles'
+import { Form } from '../../styledComponents/LogInStyles';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { setProfile } from '../../redux-toolkit/slices/profile';
+// React router
+// import {Link} from 'react-router-dom'
 
 function LogIn() {
+  // redux
+  const profile = useSelector(state => state.profile.value);
+  const dispatch = useDispatch()
+  // state inputs
   const [name, setName] = useState({value: "", valid: null })
   const [lastName, setLastName] = useState({value: "", valid: null })
   const [userName, setUserName] = useState({value: "", valid: null })
   const [image, setimage] = useState({value: "", valid: null })
   // Regular Expressions
   const regularExpressions = {
-    user: /^[a-zA-Z0-9]{4,16}$/, // Letras, numeros, guion y guion_bajo
+    user: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     link:  /^(ftp|http|https):\/\/[^ "]+$/, // para validar links
     name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{4,12}$/, // 4 a 12 digitos.
@@ -21,12 +30,23 @@ function LogIn() {
   // onSubmit
   const handlerSubmit = e => {
     e.preventDefault();
-    console.log(name);
-    console.log(lastName);
-    console.log(userName);
-    console.log(image);
+    if (name.valid & lastName.valid & userName.valid ) {
+      configureProfile(name.value, lastName.value, userName.value, image.value)
+    }
   }  
-  return (
+  const configureProfile = (Name, LastName, UserName, Image) => {
+    dispatch(setProfile({ name: Name, lastName: LastName, userName: UserName, image: Image, isLogged: true}));
+  }
+  // local storage.
+ 
+  useEffect(() => {
+    const datos = localStorage.getItem("loggin");
+    if (datos != null) {
+      dispatch(setProfile(JSON.parse(datos)))
+    }
+  }, [])
+
+return (
     <Fragment>
       <Form onSubmit={handlerSubmit}>
         <h1>Log In</h1>
@@ -59,7 +79,9 @@ function LogIn() {
           setState={setimage}
           image={true}
           expressions={regularExpressions.link} />    
-        <button>Log In</button>
+        <button >
+          Log In
+        </button>
       </Form>           
     </Fragment>
   )
