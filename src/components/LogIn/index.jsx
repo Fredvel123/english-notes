@@ -4,14 +4,12 @@ import Input from './Input';
 // styled components
 import { Form } from '../../styledComponents/LogInStyles';
 // redux
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setProfile } from '../../redux-toolkit/slices/profile';
 // React router
 // import {Link} from 'react-router-dom'
 
 function LogIn() {
-  // redux
-  const profile = useSelector(state => state.profile.value);
   const dispatch = useDispatch()
   // state inputs
   const [name, setName] = useState({value: "", valid: null })
@@ -30,7 +28,7 @@ function LogIn() {
   // onSubmit
   const handlerSubmit = e => {
     e.preventDefault();
-    if (name.valid & lastName.valid & userName.valid ) {
+    if (name.valid & lastName.valid & userName.valid & image.valid !== false   ) {
       configureProfile(name.value, lastName.value, userName.value, image.value)
     }
   }  
@@ -44,6 +42,7 @@ function LogIn() {
     if (datos != null) {
       dispatch(setProfile(JSON.parse(datos)))
     }
+    // eslint-disable-next-line
   }, [])
 
 return (

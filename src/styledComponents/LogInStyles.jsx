@@ -1,25 +1,14 @@
 import styled from 'styled-components';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+// colors and fonts
+import colors from './fonts&colors/colors.json'
+import fonts from './fonts&colors/fonts.json'
+
 const colorsInput={
   exit: "#39e642",
   error: "#e72424"
 }
-const colors = {
-  dark: "#212529",
-  darkBlue: "#073b4c",
-  pink: "#ff006e",
-  gray: "#495057",
-  graywhite: "#e9ecef",
-  white: "#f8f9fa",
-  sky: "#00b4d8"
-}
-const fonts = {
-  letter1: "'Mukta', sans-serif",
-  letter2: "'Poppins', sans-serif",
-  letter3: "'Quicksand', sans-serif",
-  letter4: "'Roboto', sans-serif",
-  letter5: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace" 
-}
+
 // ---- Log in section ----
 export const Form = styled.form`
   height: 100vh;

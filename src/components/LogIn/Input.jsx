@@ -15,6 +15,9 @@ function Input({ title, type, placeholder, state, setState, expressions, image }
     if (expressions) {
       if (expressions.test(state.value)) {
         setState({ ...state, valid: true })
+      }
+      else if(state.value.length === 0){
+        setState({...state, valid: null})
       } else {
         setState({ ...state, valid: false })
       }
