@@ -30,11 +30,11 @@ function App() {
       <Routes>
         <Route path="/" element={<LogIn />} />
       </Routes> 
-      : null}
-
+      : 
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>
+      }
     </BrowserRouter>
   );
 }

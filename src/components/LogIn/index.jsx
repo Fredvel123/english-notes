@@ -6,6 +6,7 @@ import { Form } from '../../styledComponents/LogInStyles';
 // redux
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../redux-toolkit/slices/profile';
+import InputImage from './InputImage';
 // React router
 // import {Link} from 'react-router-dom'
 
@@ -15,7 +16,8 @@ function LogIn() {
   const [name, setName] = useState({value: "", valid: null })
   const [lastName, setLastName] = useState({value: "", valid: null })
   const [userName, setUserName] = useState({value: "", valid: null })
-  const [image, setimage] = useState({value: "", valid: null })
+  // const [image, setimage] = useState({value: "", valid: null })
+  const [image, setImage] = useState(null)
   // Regular Expressions
   const regularExpressions = {
     user: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -28,14 +30,13 @@ function LogIn() {
   // onSubmit
   const handlerSubmit = e => {
     e.preventDefault();
-    if (name.valid & lastName.valid & userName.valid & image.valid !== false   ) {
-      configureProfile(name.value, lastName.value, userName.value, image.value)
+    if (name.valid & lastName.valid & userName.valid ) {
+      configureProfile(name.value, lastName.value, userName.value, image)
     }
   }  
   const configureProfile = (Name, LastName, UserName, Image) => {
     dispatch(setProfile({ name: Name, lastName: LastName, userName: UserName, image: Image, isLogged: true}));
   }
-
 return (
     <Fragment>
       <Form onSubmit={handlerSubmit}>
@@ -61,14 +62,16 @@ return (
           state={userName}
           setState={setUserName}
           expressions={regularExpressions.user} />    
-        <Input
+        {/* <Input
           title={"Image Profile"}
           placeholder={"You can copy here your link image or not"}
           type={"text"}
           state={image}
           setState={setimage}
           image={true}
-          expressions={regularExpressions.link} />    
+          expressions={regularExpressions.link} />     */}
+        <InputImage setState={setImage} state={image} />
+
         <button >
           Log In
         </button>

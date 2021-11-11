@@ -13,7 +13,6 @@ const colorsInput={
 export const Form = styled.form`
   height: 100vh;
   padding: 0 15%;
-  overflow-y: hidden !important ;
   background: ${colors.darkBlue} ;
   color: ${colors.white};
   display: flex; 
@@ -90,5 +89,29 @@ export const InputStyled = styled.input`
   &::placeholder{
     font-size: 15px;
     color: #ffffffa0;
+  }
+`
+// imput image
+export const BoxInput = styled.div`  
+  display: flex;
+  justify-content: center;
+  label {
+    margin-top: 1vh;
+    background: ${({state}) => state !== null ? colors.sky : colors.dark };
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35%;
+    color: #fff;
+    margin-left: 1.5%;
+    font-family: ${fonts.letter2};
+    cursor: pointer;
+    transition: ease-in .3s;
+  }
+  label:hover {
+    background: ${colors.gray};
+  }
+  input {
+    display: none;
   }
 `
