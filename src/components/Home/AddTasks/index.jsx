@@ -4,9 +4,11 @@ import InputRadio from './InputRadio';
 import InputText from './InputText';
 // redux 
 import { useSelector, useDispatch } from 'react-redux';
-import { setTasks } from '../../redux-toolkit/slices/tasks';
+import { setTasks } from '../../../redux-toolkit/slices/tasks';
+import { Form } from '../../../styledComponents/AddTaksStyled';
 
-function AddTask() {
+
+function AddTask({open, callback}) {
   // redux
   const tasks = useSelector(state => state.tasks.value)
   const dispatch = useDispatch()
@@ -21,6 +23,8 @@ function AddTask() {
   const handlerSubmit = e => {
     e.preventDefault();
     addTasks(title.value, task.value, categories )
+    setTask({...task, value: ""})
+    setTitle({...title, value: ""})
   }
   //  code to add a new task
   const addTasks = (titleItem, descItem, categoryItem) => {
@@ -42,7 +46,7 @@ function AddTask() {
 
   return (
     <Fragment>
-      <form onSubmit={handlerSubmit}>
+      <Form onSubmit={handlerSubmit} open={open}>
         <InputText 
           placeholder={"Task Title"}
           state={title}
@@ -56,8 +60,8 @@ function AddTask() {
         <InputRadio title={"Work"} value={"work"} state={categories} setState={setCategories}/>
         <InputRadio title={"Study"} value={"study"} state={categories} setState={setCategories}/>
         <InputRadio title={"Peronal"} value={"personal"} state={categories} setState={setCategories}/>
-        <button>Add task</button>
-      </form>   
+        <button >Add task</button>
+      </Form>   
     </Fragment>
   )
 }

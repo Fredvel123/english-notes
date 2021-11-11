@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 // components
 import Input from './Input';
 // styled components
@@ -35,15 +35,6 @@ function LogIn() {
   const configureProfile = (Name, LastName, UserName, Image) => {
     dispatch(setProfile({ name: Name, lastName: LastName, userName: UserName, image: Image, isLogged: true}));
   }
-  // local storage.
- 
-  useEffect(() => {
-    const datos = localStorage.getItem("loggin");
-    if (datos != null) {
-      dispatch(setProfile(JSON.parse(datos)))
-    }
-    // eslint-disable-next-line
-  }, [])
 
 return (
     <Fragment>
