@@ -7,7 +7,7 @@ import fonst from './fonts&colors/fonts.json'
 export const ProfileDiv = styled.div`
   background: ${colors.dark};
   width: 20%;
-  height: 100vh;
+  height: 100vh !important;
   padding-top: 5vh;
   padding-left: 2%;
   nav {
@@ -37,6 +37,10 @@ export const IconProfile = styled(FontAwesomeIcon)`
 export const IconEditProfile = styled(FontAwesomeIcon)`
   font-size: 25px;
   color: ${colors.sky};
+  cursor: pointer;
+  &:hover {
+    color: ${colors.pink};
+  }
 `
 
 export const Image = styled.img`
@@ -52,6 +56,10 @@ export const Div = styled.div`
   align-items: center;
   p {
     font-family: ${fonst.letter1};
+    cursor: pointer;
+  }
+  p:hover {
+    color: #918f8f;
   }
   #p1 {
     margin-left: 4%;

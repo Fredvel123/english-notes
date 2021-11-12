@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react'
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import {setProfile} from '../../../redux-toolkit/slices/profile';
+import {setProfile } from '../../redux-toolkit/slices/profile'
 // icons
 import {faEdit, faUserCircle, faBook, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 // styled components
-import { IconProfile, IconEditProfile, Image, ProfileDiv, Div, DataBox } from '../../../styledComponents/ProfileStyled';
+import { IconProfile, IconEditProfile, Image, ProfileDiv, Div, DataBox } from '../../styledComponents/ProfileStyled';
 
 function Profile() {
   // redux   
@@ -29,8 +29,8 @@ function Profile() {
           <h2>{profile.lastName}</h2>
         </DataBox>
         <nav>
-          <Div>
-            <IconEditProfile icon={faEdit} onClick={editLogIn} />
+          <Div  onClick={editLogIn} >
+            <IconEditProfile icon={faEdit}/>
             <p id="p1">Edit your profile</p>
           </Div>
           <Div>

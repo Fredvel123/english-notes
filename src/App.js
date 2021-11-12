@@ -1,9 +1,7 @@
-import React, {useEffect} from 'react';
+import React, { Fragment, useEffect } from 'react';
 // components
 import LogIn from './components/LogIn';
-import Home from './components/Home';
-// react - router
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import Home from './components';
 //  redux
 import { useSelector, useDispatch } from 'react-redux';
 import { setProfile } from './redux-toolkit/slices/profile';
@@ -25,17 +23,13 @@ function App() {
   }, [profile])
   
   return (
-    <BrowserRouter>
+    <Fragment>
       {!profile.isLogged ? 
-      <Routes>
-        <Route path="/" element={<LogIn />} />
-      </Routes> 
+        <LogIn />
       : 
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+        <Home />
       }
-    </BrowserRouter>
+    </Fragment>
   );
 }
 
