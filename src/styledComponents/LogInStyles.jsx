@@ -37,10 +37,13 @@ export const Form = styled.form`
   h1 {
     margin-bottom: 2vh;
     text-align: center;
-    font-family: ${fonts.letter5};
+    font-family: ${fonts.letter3};
   }
   @media screen and (max-width: 425px ){
     padding: 0 3%;
+    h1 {
+      font-size: 18px;
+    }
   }
 `
 
@@ -96,7 +99,7 @@ export const BoxInput = styled.div`
   display: flex;
   justify-content: center;
   label {
-    margin-top: 1vh;
+    margin-top: 4vh;
     background: ${({state}) => state !== null ? colors.sky : colors.dark };
     display: flex;
     justify-content: center;

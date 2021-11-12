@@ -3,9 +3,9 @@ import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import {setProfile} from '../../../redux-toolkit/slices/profile';
 // icons
-import {faEdit, faUserCircle} from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faUserCircle, faBook, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 // styled components
-import { IconProfile, IconEditProfile, Image, ProfileDiv } from '../../../styledComponents/ProfileStyled';
+import { IconProfile, IconEditProfile, Image, ProfileDiv, Div, DataBox } from '../../../styledComponents/ProfileStyled';
 
 function Profile() {
   // redux   
@@ -15,18 +15,37 @@ function Profile() {
   const editLogIn = () => {
     dispatch(setProfile({...profile, isLogged: false}))
   }   
+  
   return (
     <Fragment>
       <ProfileDiv>
-        {profile.image ? 
-          <Image src={profile.image} alt="" width="250px" />
-        : <IconProfile icon={faUserCircle} /> }
-        <h2>{profile.name}</h2>
-        <h3>{profile.lastName}</h3>
-        <div>
-          <IconEditProfile icon={faEdit} onClick={editLogIn} /> 
-          <p>Edit your profile</p>
-        </div>  
+        <DataBox>
+          {
+            profile.image ?
+              <Image src={profile.image} alt="" width="250px" />
+            : <IconProfile icon={faUserCircle} />
+          }
+          <h2>{profile.name}</h2>
+          <h2>{profile.lastName}</h2>
+        </DataBox>
+        <nav>
+          <Div>
+            <IconEditProfile icon={faEdit} onClick={editLogIn} />
+            <p id="p1">Edit your profile</p>
+          </Div>
+          <Div>
+            <IconEditProfile icon={faBook} />
+            <p id="p2">My diccionary</p>
+          </Div>
+          <Div>
+            <IconEditProfile icon={faPlus} />
+            <p id="p3">New Words</p>
+          </Div>
+          <Div>
+            <IconEditProfile icon={faSearch} />
+            <p id="p4">Search words</p>
+          </Div>
+        </nav>
       </ProfileDiv>
     </Fragment>
   )

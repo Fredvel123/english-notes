@@ -7,8 +7,6 @@ import { Form } from '../../styledComponents/LogInStyles';
 import { useDispatch } from 'react-redux';
 import { setProfile } from '../../redux-toolkit/slices/profile';
 import InputImage from './InputImage';
-// React router
-// import {Link} from 'react-router-dom'
 
 function LogIn() {
   const dispatch = useDispatch()
@@ -40,7 +38,7 @@ function LogIn() {
 return (
     <Fragment>
       <Form onSubmit={handlerSubmit}>
-        <h1>Log In</h1>
+        <h1>Welcome to English Notes app</h1>
         <Input
           title={"Name"}
           placeholder={"Thomas"}
@@ -62,16 +60,7 @@ return (
           state={userName}
           setState={setUserName}
           expressions={regularExpressions.user} />    
-        {/* <Input
-          title={"Image Profile"}
-          placeholder={"You can copy here your link image or not"}
-          type={"text"}
-          state={image}
-          setState={setimage}
-          image={true}
-          expressions={regularExpressions.link} />     */}
         <InputImage setState={setImage} state={image} />
-
         <button >
           Log In
         </button>

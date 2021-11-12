@@ -1,15 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const tasksSlice = createSlice({
-  name: "tasks",
+  name: "newWords",
   initialState: {
     value: []
   },
   reducers: {
-    setTasks: (state, action) => {
+    setNewWords: (state, action) => {
       state.value = action.payload
     }
   }
 })
 export default tasksSlice.reducer;
-export const {setTasks} = tasksSlice.actions;
+export const {setNewWords} = tasksSlice.actions;

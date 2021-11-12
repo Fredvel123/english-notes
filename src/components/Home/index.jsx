@@ -1,22 +1,17 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
+// styled components
+import { HomeStyled } from '../../styledComponents/HomeStyled';
 // components
-import AddTask from './AddTasks'
 import Profile from './Profile';
 // redux
 
 function Home() {
   // code to close and open the 'add task section'
-  const [openCloseInput, setopenCloseInput] = useState(false);
-  const handlerInput = () => {
-    setopenCloseInput(!openCloseInput)
-  }
   return (
     <Fragment>
-      <Profile />
-      <h1>this are the tasks</h1> 
-      <button onClick={handlerInput} >+</button>
-
-      <AddTask open={openCloseInput} callback={handlerInput} />
+      <HomeStyled  >
+        <Profile />
+      </HomeStyled>
     </Fragment>
   )
 }
