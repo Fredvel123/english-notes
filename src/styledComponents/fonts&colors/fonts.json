@@ -3,5 +3,7 @@
     "letter2": "'Poppins', sans-serif",
     "letter3": "'Quicksand', sans-serif",
     "letter4": "'Roboto', sans-serif",
-    "letter5": "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace" 
+    "letter5": "source-code-pro, Menlo, Monaco, Consolas, 'Courier New',monospace",
+    "letter6": "Orbitron",
+    "letter7": "Julius Sans One" 
   }

@@ -29,6 +29,7 @@ function SearchWords() {
   return (
     <Fragment>
       <Form action="" onSubmit={handlerSubmit} >
+        <p>find new words</p>
         <label>
           <input 
             id="search" 

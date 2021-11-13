@@ -9,6 +9,11 @@ export const Form = styled.form`
   padding: 6vh 5%;
   width: 90%;
   position: relative;
+  p {
+    font-family: ${fonts.letter7};
+    margin-bottom: 3vh;
+    color: ${colors.graywhite};
+  }
   label {
     width: 90%;
     position: absolute;
