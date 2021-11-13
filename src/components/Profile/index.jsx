@@ -15,8 +15,7 @@ function Profile() {
   const editLogIn = () => {
     dispatch(setProfile({...profile, isLogged: false}))
   }   
-  
-  return (
+return (
     <Fragment>
       <ProfileDiv>
         <DataBox>

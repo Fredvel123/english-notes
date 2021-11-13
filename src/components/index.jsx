@@ -10,7 +10,6 @@ const HomeStyled = styled.div`
 `
 
 function Home() {
-  // code to close and open the 'add task section'
   return (
     <Fragment>
       <HomeStyled >

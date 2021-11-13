@@ -1,6 +1,11 @@
 import React, { Fragment, useState } from 'react';
 // components
 import CardsWords from './CardsWords';
+// styled components
+import { Box, Form, SearchIcon } from '../../styledComponents/SearchWordsStyled';
+// icons
+import {faSearch} from '@fortawesome/free-solid-svg-icons'
+
 
 function SearchWords() {
   const [input, setInput] = useState("");
@@ -19,24 +24,23 @@ function SearchWords() {
     const url_api = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
     const res_data = await url_api.json();
     setWords(res_data);
-    setMeanings(res_data[0].meanings)
-    setPhonetics(res_data[0].phonetics[0])
   };
-  const [meanings, setMeanings] = useState([])
-  const [phonetics, setPhonetics] = useState([])
   
   return (
     <Fragment>
-      <form action="" onSubmit={handlerSubmit} >
-        <input 
-          id="search" 
-          type="text"
-          required
-          value={input}
-          onChange={handlerInput} />
-        <button>Search</button>
-      </form>
-      <CardsWords words={words} phonetics={phonetics} meanings={meanings} />
+      <Form action="" onSubmit={handlerSubmit} >
+        <label>
+          <input 
+            id="search" 
+            type="text"
+            placeholder="write any word"
+            required
+            value={input}
+            onChange={handlerInput} />
+          <SearchIcon icon={faSearch} onClick={handlerSubmit} />
+        </label>
+      </Form>
+      <CardsWords words={words} />
     </Fragment>
   )
 }

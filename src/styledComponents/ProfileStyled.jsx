@@ -6,9 +6,10 @@ import fonst from './fonts&colors/fonts.json'
 
 export const ProfileDiv = styled.div`
   background: ${colors.dark};
+  position: fixed;
   width: 20%;
   height: 100vh !important;
-  padding-top: 5vh;
+  padding-top: 9vh;
   padding-left: 2%;
   nav {
     padding-top: 5vh;
