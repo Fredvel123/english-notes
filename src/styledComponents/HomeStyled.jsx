@@ -19,6 +19,13 @@ export const HomeStyled = styled.div`
     border-radius: ${({state}) => state ? "35px" : "0" } ;
     overflow-x: hidden !important;
   }
+  @media screen and (min-width: 380px) {
+    transform: ${({state}) => state ? "translateX(50%)" : "translateX(0%)" };
+  }
+  @media screen and (min-width: 530px) {
+    transform: ${({state}) => state ? "translateX(36%)" : "translateX(0%)" };
+  }
+
   // header section 
   h2 {
     padding: 0 5%;
