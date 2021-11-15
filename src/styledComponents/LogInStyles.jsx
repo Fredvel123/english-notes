@@ -75,7 +75,7 @@ export const IconsStyled = styled(FontAwesomeIcon)`
   z-index: 100;
 `
 export const InputStyled = styled.input`
-  width: 97%;
+  width: 95%;
   font-weight: 500;
   font-family: ${fonts.letter1};
   height: 5vh;

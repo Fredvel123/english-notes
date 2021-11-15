@@ -4,6 +4,8 @@ import { HomeStyled } from '../../styledComponents/HomeStyled'
 // components
 import Menu from './Menu'
 import SearchWords from '../SerchWords';
+import MyDiccionary from '../MyDiccionary';
+import HomeStart from '../HomeStart';
 // redux
 import {useSelector} from 'react-redux'
 
@@ -16,7 +18,9 @@ function HomePage() {
       <HomeStyled state={closeOpenMenu} >
         <Menu state={closeOpenMenu} setState={setcloseOpenMenu} />
         <h2>What's up  {profile.name}</h2> 
+        <HomeStart />
         <SearchWords />
+        <MyDiccionary />
       </HomeStyled>
     </Fragment>
   )

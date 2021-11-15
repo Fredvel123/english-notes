@@ -6,9 +6,11 @@ import fonts from './fonts&colors/fonts.json'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
 export const Form = styled.form`
+  transition: ease-in-out .3s;
+  transform: ${({state}) => state ? "translateX(0)" : "translateX(100%)"} ;
   padding: 6vh 5%;
   width: 90%;
-  position: relative;
+  position: ${({state}) => state ? "relative" : "absolute"};
   p {
     font-family: ${fonts.letter7};
     margin-bottom: 3vh;
@@ -62,7 +64,10 @@ export const SearchIcon = styled(FontAwesomeIcon)`
 
 //  cards styles
 
-export const Card= styled.div`
+export const Card = styled.div`
+  position: ${({state}) => state ? "relative" : "absolute"};
+  transition: ease-in-out .3s;
+  transform: ${({state}) => state ? "translateX(0)" : "translateX(-500%)"} ;
   padding: 0 5%;
   padding-top: 6vh;
   audio {

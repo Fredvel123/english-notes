@@ -6,7 +6,7 @@ import { useDispatch ,useSelector } from 'react-redux';
 import { setDiccionary } from '../../redux-toolkit/slices/diccionaty';
 
 
-function CardsWords({words}) {
+function CardsWords({words, state}) {
   const dispatch = useDispatch()
   const diccionary = useSelector(state => state.diccionary.value)  
 
@@ -18,21 +18,21 @@ function CardsWords({words}) {
     }
   };
   // saving in the local storage "my diccionary" !
-  // useEffect(() => {
-  //   let data = localStorage.getItem('diccionary');
-  //   if(data !== null) {
-  //     dispatch(setDiccionary(JSON.parse(data)))
-  //   } 
-  // }, [dispatch])
-  // useEffect(() => {
-  //   localStorage.setItem("diccionary", JSON.stringify(diccionary) )
-  // }, [diccionary])
+  useEffect(() => {
+    let data = localStorage.getItem('diccionary');
+    if(data !== null) {
+      dispatch(setDiccionary(JSON.parse(data)))
+    } 
+  }, [dispatch])
+  useEffect(() => {
+    localStorage.setItem("diccionary", JSON.stringify(diccionary) )
+  }, [diccionary])
 
   return (
-    <Fragment>
+    <Fragment  >
       {!words.title ? 
         words.map(item => (
-          <Card>
+          <Card state={state}>
             <h3>{item.word}</h3>
             <button onClick={() => addWordToMyDiccionary(item) } >Add</button>
             {item.meanings.map(el => (

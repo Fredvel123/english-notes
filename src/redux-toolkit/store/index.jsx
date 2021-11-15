@@ -3,11 +3,13 @@ import { configureStore } from '@reduxjs/toolkit';
 import profile from '../slices/profile';
 import newWords from '../slices/newWords'
 import diccionary from '../slices/diccionaty';
+import menu from '../slices/menu';
 
 export const store = configureStore({
   reducer: {
     profile,
     newWords,
-    diccionary 
+    diccionary,
+    menu
   }
 })

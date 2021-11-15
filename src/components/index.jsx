@@ -10,6 +10,7 @@ const HomeStyled = styled.div`
 `
 
 function Home() {
+  // state to menu.
   return (
     <Fragment>
       <HomeStyled >

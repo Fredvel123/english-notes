@@ -5,7 +5,7 @@ import colors from './fonts&colors/colors.json'
 import fonst from './fonts&colors/fonts.json'
 
 export const ProfileDiv = styled.div`
-  background: ${colors.dark};
+  background: ${colors.darkBlue};
   position: fixed;
   width: 20%;
   height: 100vh !important;
@@ -33,11 +33,11 @@ export const IconProfile = styled(FontAwesomeIcon)`
   border-radius: 50%;
   padding: 4px;
   margin-bottom: 25px;
-  border: 4px solid ${colors.sky} ;
+  border: 4px solid ${colors.pink} ;
 `
 export const IconEditProfile = styled(FontAwesomeIcon)`
   font-size: 25px;
-  color: ${colors.sky};
+  color: ${colors.pink};
   cursor: pointer;
   &:hover {
     color: ${colors.pink};

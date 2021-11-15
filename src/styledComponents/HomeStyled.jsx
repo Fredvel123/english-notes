@@ -6,12 +6,12 @@ import colors from './fonts&colors/colors.json'
 
 
 export const HomeStyled = styled.div`
-  background: ${colors.darkBlue};
+  background: ${colors.dark};
   margin-left: 20%;
   overflow-y: scroll;
   width: 80%;
   height: 100vh;
-  transition: ease-in-out .5s;
+  transition: ease-in-out .1s;
   @media screen and (max-width: 735px) {
     margin-left: 0;
     width: 100%;
