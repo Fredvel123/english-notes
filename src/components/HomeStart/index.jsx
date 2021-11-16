@@ -1,30 +1,92 @@
-import React, { Fragment, useEffect ,useState } from 'react'
+import React, { useEffect , useState } from 'react';
+// styled components
+import { CardsGallery, CardsVideo, Form, HomeStartStyled, IconSearch } from '../../styledComponents/HomeStartStyled';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import {setMyVideos} from '../../redux-toolkit/slices/myVideos'
+// icons 
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 function HomeStart() {
-  const [videos, setVideos] = useState([])
+  const menu = useSelector(state => state.menu.value);
   // code to get the youtube api.
+  const [videos, setVideos] = useState([])
   const API_KEY = "AIzaSyCCmbiw7fhBzZ3-sDdEafbMuOKl0wVR7JE";
-  const VIDEO = "jose madero"
-  const getYoutubeApi = async () => {
-    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=8&q=${VIDEO}&key=${API_KEY}`)
+  const API_KEY2 = "AIzaSyCwF0L-rPume6jvXSs1k7d63yQlahZ38WY"
+  const video = "improve my english"
+  const getYoutubeApi = async (VIDEO) => {
+    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${API_KEY2}`)
     const RES_API = await URL_API.json();
     setVideos(RES_API.items)
-    console.log(videos); 
   }
+//   useEffect(() => {
+//     getYoutubeApi(video);
+//   }, [])
+  // code to search videos
+  const [input, setInput] = useState("");
+  const handlerInput = e => {
+    setInput(e.target.value);
+  }
+  // code to submit the form.
+  const handlerSubmit = e => {
+    e.preventDefault();
+    getYoutubeApi(input);
+    setInput("");
+  }   
+  // code to add videos to an state global.
+  const myVideos = useSelector(state => state.myVideos.value);
+  const dispatch = useDispatch()
+  const addToVideos = el => {
+    let video = videos.filter(item => item.snippet.title === el );
+    if (!myVideos.find(i => i.video[0].etag === video[0].etag ) ) {
+      dispatch(setMyVideos([...myVideos, {video}]))
+        //   setMyVideos()
+    }
+    console.log(myVideos);
+  }
+  // useLocalStorage.
   useEffect(() => {
-    getYoutubeApi();
-  }, [])
+    let data = localStorage.getItem('myVideos');
+    if (data !== null) {
+      dispatch(setMyVideos(JSON.parse(data)))
+    }
+  }, [dispatch])
+  useEffect(() => {
+    localStorage.setItem('myVideos', JSON.stringify(myVideos))
+  }, [myVideos])
+  
   return (
-    <Fragment>
-      <h1>This will be the home page section!</h1>            
+    <HomeStartStyled state={menu.home} >
+      <p>Home</p>            
+      <Form onSubmit={handlerSubmit} >
+        <label>
+          <input 
+            type="text"
+            autocomplete="off"
+            value={input}
+            spellcheck="false"
+            onChange={handlerInput}
+            required
+            placeholder="Search any video from Youtube" />
+          <IconSearch icon={faSearch} onClick={handlerSubmit} />
+        </label>
+      </Form>
       {/* <button onClick={() => getYoutubeApi() } >Jose Madero</button> */}
-      {videos ? 
-        videos.map(item => (
-            <iframe src={`https://www.youtube.com/embed/${item.id.videoId}`}  height="325" width="400" frameBorder="0" allowFullScreen  name="demo"></iframe>
-        ) )
-      : null}
+        {videos ? 
+          <CardsGallery>
+          {videos.map(item => 
+              item.id.videoId ?
+                <CardsVideo>
+                  <img src={item.snippet.thumbnails.medium.url} alt="" />
+                  <h3>{item.snippet.title}</h3>
+                  <button onClick={() => addToVideos(item.snippet.title)} >Add to my classes</button>
+                </CardsVideo>
+              : null)}
+          </CardsGallery>
+        : <h2>no videos</h2> }
+         {/* <iframe src={`https://www.youtube.com/embed/${item.id.videoId}`}  height="100" width="220" frameBorder="0" allowFullScreen  name="demo"></iframe> */}
 
-    </Fragment>
+    </HomeStartStyled>
   )
 }
 

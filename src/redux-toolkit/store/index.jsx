@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit'; 
 // slices - states
 import profile from '../slices/profile';
-import newWords from '../slices/newWords'
 import diccionary from '../slices/diccionaty';
+import myVideos from '../slices/myVideos';
 import menu from '../slices/menu';
 
 export const store = configureStore({
   reducer: {
     profile,
-    newWords,
+    myVideos,
     diccionary,
     menu
   }

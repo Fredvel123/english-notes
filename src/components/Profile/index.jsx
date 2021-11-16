@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {setProfile } from '../../redux-toolkit/slices/profile'
 import {setMenu} from '../../redux-toolkit/slices/menu'
 // icons
-import {faEdit, faUserCircle, faBook, faPlus, faSearch, faHome } from '@fortawesome/free-solid-svg-icons'
+import {faEdit, faUserCircle, faBook, faPlayCircle, faSearch, faHome } from '@fortawesome/free-solid-svg-icons'
 // styled components
 import { IconProfile, IconEditProfile, Image, ProfileDiv, Div, DataBox } from '../../styledComponents/ProfileStyled';
 
@@ -17,12 +17,13 @@ function Profile() {
     dispatch(setProfile({...profile, isLogged: false}))
   }   
   // code to search words
-  const menu = useSelector(state => state.menu.value)
+  // const menu = useSelector(state => state.menu.value)
   const handlerSearch = () => {
     dispatch(setMenu({
       home: false,
       myDiccionary: false,
       newWords: false,
+      myLessons: false,
       searchWords: true}))
   }
   // code to diccionary
@@ -31,6 +32,16 @@ function Profile() {
       home: false,
       myDiccionary: true,
       newWords: false,
+      myLessons: false,
+      searchWords: false}))
+  }
+  // code to home
+  const handlerHome = () => {
+    dispatch(setMenu({
+      home: true,
+      myDiccionary: false,
+      newWords: false,
+      myLessons: false,
       searchWords: false}))
   }
 return (
@@ -46,7 +57,7 @@ return (
           <h2>{profile.lastName}</h2>
         </DataBox>
         <nav>
-        <Div>
+        <Div onClick={handlerHome} >
             <IconEditProfile icon={faHome} />
             <p id="p3">Home</p>
           </Div>
@@ -54,10 +65,10 @@ return (
             <IconEditProfile icon={faBook} />
             <p id="p2">My diccionary</p>
           </Div>
-          {/* <Div>
-            <IconEditProfile icon={faPlus} />
-            <p id="p3">New Words</p>
-          </Div> */}
+          <Div>
+            <IconEditProfile icon={faPlayCircle} />
+            <p id="p3">My classes</p>
+          </Div>
           <Div onClick={handlerSearch} >
             <IconEditProfile icon={faSearch} />
             <p id="p4">Search words</p>

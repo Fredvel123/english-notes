@@ -34,8 +34,7 @@ function SearchWords() {
       <Form action="" onSubmit={handlerSubmit} state={menu.searchWords} >
         <p>find new words</p>
         <label>
-          <input 
-            id="search" 
+          <input
             type="text"
             placeholder="write any word"
             required
