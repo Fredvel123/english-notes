@@ -6,6 +6,7 @@ import Menu from './Menu'
 import SearchWords from '../SerchWords';
 import MyDiccionary from '../MyDiccionary';
 import HomeStart from '../HomeStart';
+import MyClasses from '../MyClasses';
 // redux
 import {useSelector} from 'react-redux'
 
@@ -21,6 +22,7 @@ function HomePage() {
         <HomeStart />
         <SearchWords />
         <MyDiccionary />
+        <MyClasses />
       </HomeStyled>
     </Fragment>
   )

@@ -12,10 +12,10 @@ function HomeStart() {
   // code to get the youtube api.
   const [videos, setVideos] = useState([])
   const API_KEY = "AIzaSyCCmbiw7fhBzZ3-sDdEafbMuOKl0wVR7JE";
-  const API_KEY2 = "AIzaSyCwF0L-rPume6jvXSs1k7d63yQlahZ38WY"
+  // const API_KEY2 = "AIzaSyCwF0L-rPume6jvXSs1k7d63yQlahZ38WY"
   const video = "improve my english"
   const getYoutubeApi = async (VIDEO) => {
-    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${API_KEY2}`)
+    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${API_KEY}`)
     const RES_API = await URL_API.json();
     setVideos(RES_API.items)
   }
@@ -71,7 +71,6 @@ function HomeStart() {
           <IconSearch icon={faSearch} onClick={handlerSubmit} />
         </label>
       </Form>
-      {/* <button onClick={() => getYoutubeApi() } >Jose Madero</button> */}
         {videos ? 
           <CardsGallery>
           {videos.map(item => 
@@ -84,7 +83,6 @@ function HomeStart() {
               : null)}
           </CardsGallery>
         : <h2>no videos</h2> }
-         {/* <iframe src={`https://www.youtube.com/embed/${item.id.videoId}`}  height="100" width="220" frameBorder="0" allowFullScreen  name="demo"></iframe> */}
 
     </HomeStartStyled>
   )

@@ -7,7 +7,7 @@ export const menuSlice = createSlice({
       home: true,
       myDiccionary: false,
       newWords: false,
-      myLessons: false,
+      myClasses: false,
       searchWords: false
     }
   },

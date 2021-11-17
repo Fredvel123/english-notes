@@ -23,7 +23,7 @@ function Profile() {
       home: false,
       myDiccionary: false,
       newWords: false,
-      myLessons: false,
+      myClasses: false,
       searchWords: true}))
   }
   // code to diccionary
@@ -32,7 +32,7 @@ function Profile() {
       home: false,
       myDiccionary: true,
       newWords: false,
-      myLessons: false,
+      myClasses: false,
       searchWords: false}))
   }
   // code to home
@@ -41,7 +41,16 @@ function Profile() {
       home: true,
       myDiccionary: false,
       newWords: false,
-      myLessons: false,
+      myClasses: false,
+      searchWords: false}))
+  }
+  // code to my classes
+  const handlerMyClasses = () => {
+    dispatch(setMenu({
+      home: false,
+      myDiccionary: false,
+      newWords: false,
+      myClasses: true,
       searchWords: false}))
   }
 return (
@@ -65,7 +74,7 @@ return (
             <IconEditProfile icon={faBook} />
             <p id="p2">My diccionary</p>
           </Div>
-          <Div>
+          <Div onClick={handlerMyClasses} >
             <IconEditProfile icon={faPlayCircle} />
             <p id="p3">My classes</p>
           </Div>
