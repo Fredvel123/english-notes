@@ -13,14 +13,14 @@ function LogIn() {
   // state inputs
   const [name, setName] = useState({value: "", valid: null })
   const [lastName, setLastName] = useState({value: "", valid: null })
-  const [userName, setUserName] = useState({value: "", valid: null })
+  // const [userName, setUserName] = useState({value: "", valid: null })
   // const [image, setimage] = useState({value: "", valid: null })
   const [image, setImage] = useState(null)
   // Regular Expressions
   const regularExpressions = {
     user: /^[a-zA-Z0-9_-]{4,16}$/, // Letras, numeros, guion y guion_bajo
     link:  /^(ftp|http|https):\/\/[^ "]+$/, // para validar links
-    name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    name: /^[a-zA-ZÀ-ÿ\s]{1,10}$/, // Letras y espacios, pueden llevar acentos.
     password: /^.{4,12}$/, // 4 a 12 digitos.
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     phone: /^\d{7,14}$/ // 7 a 14 numeros.
@@ -28,12 +28,12 @@ function LogIn() {
   // onSubmit
   const handlerSubmit = e => {
     e.preventDefault();
-    if (name.valid & lastName.valid & userName.valid ) {
-      configureProfile(name.value, lastName.value, userName.value, image)
+    if (name.valid & lastName.valid) {
+      configureProfile(name.value, lastName.value, image)
     }
   }  
-  const configureProfile = (Name, LastName, UserName, Image) => {
-    dispatch(setProfile({ name: Name, lastName: LastName, userName: UserName, image: Image, isLogged: true}));
+  const configureProfile = (Name, LastName, Image) => {
+    dispatch(setProfile({ name: Name, lastName: LastName, image: Image, isLogged: true}));
   }
 return (
     <Fragment>
@@ -53,13 +53,13 @@ return (
           state={lastName}
           setState={setLastName}
           expressions={regularExpressions.name} />    
-        <Input
+        {/* <Input
           title={"User name"}
           placeholder={"ThomWill_25"}
           type={"text"}
           state={userName}
           setState={setUserName}
-          expressions={regularExpressions.user} />    
+          expressions={regularExpressions.user} />     */}
         <InputImage setState={setImage} state={image} />
         <button >
           Log In

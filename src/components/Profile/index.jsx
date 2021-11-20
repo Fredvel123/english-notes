@@ -66,17 +66,17 @@ return (
           <h2>{profile.lastName}</h2>
         </DataBox>
         <nav>
-        <Div onClick={handlerHome} >
+          <Div onClick={handlerHome} >
             <IconEditProfile icon={faHome} />
             <p id="p3">Home</p>
-          </Div>
-          <Div onClick={handlerDiccionary}>
-            <IconEditProfile icon={faBook} />
-            <p id="p2">My diccionary</p>
           </Div>
           <Div onClick={handlerMyClasses} >
             <IconEditProfile icon={faPlayCircle} />
             <p id="p3">My classes</p>
+          </Div>
+          <Div onClick={handlerDiccionary}>
+            <IconEditProfile icon={faBook} />
+            <p id="p2">My diccionary</p>
           </Div>
           <Div onClick={handlerSearch} >
             <IconEditProfile icon={faSearch} />

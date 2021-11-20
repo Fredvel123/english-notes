@@ -24,7 +24,6 @@ export const Form = styled.form`
   }
   input {
     width: 100%;
-    border-radius: 25px;
     height: 6vh;
     padding: 0 3%;
     outline: none;

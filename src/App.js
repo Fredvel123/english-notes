@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 // components
 import LogIn from './components/LogIn';
 import Home from './components';

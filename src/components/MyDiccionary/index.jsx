@@ -2,12 +2,11 @@ import React, { Fragment } from 'react'
 // styled components
 import { DiccionaryStyled } from '../../styledComponents/DiccionaryStyled'
 // redux
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 function MyDiccionary() {
   const menu = useSelector(state => state.menu.value);
   const diccionary = useSelector(state => state.diccionary.value);
-  const dispatch = useDispatch();
 
   return (
     <Fragment>

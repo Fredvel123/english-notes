@@ -4,11 +4,10 @@ export const myClassesSlice = createSlice({
   name: "myClasses",
   initialState: {
     value: [{
-      title: "",
       videoId: "",
       notes: [{
         word: "",
-        sense: "",
+        sentences: [],
         descripton: ""
       }]
     }]

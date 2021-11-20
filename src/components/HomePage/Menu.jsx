@@ -20,6 +20,7 @@ function Menu({state, setState} ) {
     if (state === true) {
       setState(false)
     }
+    // eslint-disable-next-line
   }, [menu]);
   // 
   const handlerSearchWords = () => {

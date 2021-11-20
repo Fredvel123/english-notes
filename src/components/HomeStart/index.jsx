@@ -13,7 +13,6 @@ function HomeStart() {
   const [videos, setVideos] = useState([])
   const API_KEY = "AIzaSyCCmbiw7fhBzZ3-sDdEafbMuOKl0wVR7JE";
   // const API_KEY2 = "AIzaSyCwF0L-rPume6jvXSs1k7d63yQlahZ38WY"
-  const video = "improve my english"
   const getYoutubeApi = async (VIDEO) => {
     const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${API_KEY}`)
     const RES_API = await URL_API.json();
