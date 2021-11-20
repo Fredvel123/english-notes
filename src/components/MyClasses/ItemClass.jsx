@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useParams } from 'react-router';
 // redux.
 import { useSelector, useDispatch } from 'react-redux';
 import { setClasses } from '../../redux-toolkit/slices/myClasses';
 // styled components
 import { Div, Video } from '../../styledComponents/ItemClassStyled';
-import { setMyVideos } from '../../redux-toolkit/slices/myVideos';
 
 function ItemClass() {
   const params = useParams();
@@ -18,18 +17,6 @@ function ItemClass() {
       dispatch(setClasses([...myClasses, {videoId: elem} ]))
     }
   }
-  // add to local storage all data to my claases
-  useEffect(() => {
-    const data = localStorage.getItem('myClasses');
-    if (data !== null) {
-      dispatch(setClasses(JSON.parse(data)))
-    }
-  }, [setClasses, setMyVideos])
-  useEffect(() => {
-    localStorage.setItem('myClasses', JSON.stringify(myClasses) )
-  }, [myClasses])
-
-
   return (
     <Div>
       <Video
