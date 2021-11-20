@@ -56,6 +56,15 @@ export const CardsGallery = styled.div`
   text-align: center;
   column-gap: 10px;
   margin: 0 15px;
+  @media screen and (max-width: 950px) {
+    columns: 5 165px;
+  }
+  @media screen and (max-width: 450px) {
+    columns: 5 320px;
+  }
+  @media screen and (max-width: 735px) {
+    columns: 5 220px;
+  }
 `
 export const Form = styled.form`
   position: relative;

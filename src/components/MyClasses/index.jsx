@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // redux
 import { useSelector, useDispatch } from 'react-redux';
 import { setMyVideos } from '../../redux-toolkit/slices/myVideos'
+import { setClasses } from '../../redux-toolkit/slices/myClasses';
 // styled component
 import { Buttons, Cards, CardVideo, MyClassesStyled } from '../../styledComponents/MyClassesStyled';
 // react router dom
@@ -11,11 +12,14 @@ function MyClasses() {
   const menu = useSelector(state => state.menu.value);
   const myVideos = useSelector(state => state.myVideos.value);
   const dispatch = useDispatch()
+  // code to my claases state.
+  const myClasses = useSelector(state => state.myClasses.value);
   // code to remove the class
   const removeClass = elem => {
     let removeItem = myVideos.filter(item => item.video[0].id.videoId !== elem );
     dispatch(setMyVideos(removeItem))
   }
+  
   
   return (
     <MyClassesStyled state={menu.myClasses} >
@@ -28,7 +32,7 @@ function MyClasses() {
               <h3>{item.video[0].snippet.title}</h3>
               <Buttons>
                 <Link to={item.video[0].id.videoId}>watch video</Link>
-                <button onClick={() => removeClass(item.video[0].id.videoId)} >remove this class</button>
+                <button onClick={() => removeClass(item.video[0].id.videoId)} >remove video</button>
               </Buttons>
             </CardVideo>
           )}

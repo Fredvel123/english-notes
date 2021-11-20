@@ -28,6 +28,15 @@ export const Cards = styled.div`
   text-align: center;
   column-gap: 10px;
   margin: 0 0;
+  @media screen and (max-width: 950px) {
+    columns: 5 165px;
+  }
+  @media screen and (max-width: 450px) {
+    columns: 5 320px;
+  }
+  @media screen and (max-width: 735px) {
+    columns: 5 220px;
+  }
 `
 
 export const CardVideo = styled.div`
@@ -49,37 +58,55 @@ export const CardVideo = styled.div`
     margin:0 5px;
     margin-top: 15px;
   }
+  @media screen and (max-width: 950px) {
+    h3 {
+      font-size: 15px;
+    }
+  }
+
 `
 export const Buttons = styled.div`
+  width: 90%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin: 3vh 0;
   a {
     font-family: ${fonts.letter3};
     background: ${colors.pink};
+    display: table-cell;
+    vertical-align: middle;
     color: white;
     padding: .5vh 3%;
-    margin-right: 7.5%;
     font-size: 15px;
     transition: ease-in .3s;
-    width: 35%;
   }
   a:hover{
     background: ${colors.dark};
   }
   button {
-    width: 35%;
     font-family: ${fonts.letter3};
     background: ${colors.pink};
     cursor: pointer;
     color: white;
     border: none;
     padding: .5vh 3%;
-    margin-left: 7.5%;
     font-size: 15px;
     transition: ease-in .3s;
   }
   button:hover{
     background: ${colors.dark};
+  }
+  @media screen and (max-width: 950px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    button {
+      width: 100%;
+    }
+    a {
+      margin-bottom: 2vh;
+      width: 100%;
+    }
   }
 `
