@@ -2,20 +2,20 @@ import React from 'react'
 import { useParams } from 'react-router';
 // redux.
 import { useSelector, useDispatch } from 'react-redux';
-import { setClasses } from '../../redux-toolkit/slices/myClasses';
+import { setMyVideos } from '../../redux-toolkit/slices/myVideos';
 // styled components
 import { Div, Video } from '../../styledComponents/ItemClassStyled';
 
 function ItemClass() {
   const params = useParams();
   // get tge info from the state "my classes"
-  const myClasses = useSelector(state => state.myClasses.value);
+  const myVideos = useSelector(state => state.myVideos.value);
   const dispatch = useDispatch()
   // function to create a new object
   const addNewObject = elem => {
-    if (!myClasses.find(el => el.videoId === elem ) ) {
-      dispatch(setClasses([...myClasses, {videoId: elem} ]))
-    }
+    // if (!myVideos.find(el => el.video[0].id.videoId === elem ) ) {
+    // }
+    dispatch(setMyVideos([...myVideos, {videoId: elem}]));
   }
   return (
     <Div>

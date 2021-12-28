@@ -34,12 +34,11 @@ function HomeStart() {
   }   
   // code to add videos to an state global.
   const myVideos = useSelector(state => state.myVideos.value);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch()  
   const addToVideos = el => {
     let video = videos.filter(item => item.snippet.title === el );
     if (!myVideos.find(i => i.video[0].etag === video[0].etag ) ) {
       dispatch(setMyVideos([...myVideos, {video}]))
-        //   setMyVideos()
     }
     console.log(myVideos);
   }
