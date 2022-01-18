@@ -11,10 +11,10 @@ function HomeStart() {
   const menu = useSelector(state => state.menu.value);
   // code to get the youtube api.
   const [videos, setVideos] = useState([])
-  const API_KEY = "AIzaSyCCmbiw7fhBzZ3-sDdEafbMuOKl0wVR7JE";
+  // const API_KEY = "AIzaSyCCmbiw7fhBzZ3-sDdEafbMuOKl0wVR7JE";
   // const API_KEY2 = "AIzaSyCwF0L-rPume6jvXSs1k7d63yQlahZ38WY"
   const getYoutubeApi = async (VIDEO) => {
-    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${API_KEY}`)
+    const URL_API = await fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${VIDEO}&key=${process.env.REACT_APP_YOUTUBE_KEY}`)
     const RES_API = await URL_API.json();
     setVideos(RES_API.items)
   }
@@ -31,6 +31,7 @@ function HomeStart() {
     e.preventDefault();
     getYoutubeApi(input);
     setInput("");
+    console.log(process.env);
   }   
   // code to add videos to an state global.
   const myVideos = useSelector(state => state.myVideos.value);
